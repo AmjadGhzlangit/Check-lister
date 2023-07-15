@@ -7,7 +7,6 @@ use App\Http\Requests\ChecklistRequest;
 use App\Http\Requests\StoreCheckListGroupRequest;
 use App\Models\Checklist;
 use App\Models\ChecklistGroup;
-use Illuminate\Http\Request;
 
 class ChecklistController extends Controller
 {
@@ -24,7 +23,7 @@ class ChecklistController extends Controller
      */
     public function create(ChecklistGroup $checklist_group)
     {
-        return view('admin.checklist.create',compact('checklist_group'));
+        return view('admin.checklist.checklist-create',compact('checklist_group'));
     }
 
     /**
@@ -49,7 +48,7 @@ class ChecklistController extends Controller
      */
     public function edit(ChecklistGroup $checklist_group , Checklist $checklist)
     {
-        return view('admin.checklist.edit',compact('checklist_group','checklist'));
+        return view('admin.checklist.checklist-edit',compact('checklist_group','checklist'));
     }
 
     /**
