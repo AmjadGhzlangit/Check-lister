@@ -7,64 +7,38 @@ use App\Http\Requests\ChecklistRequest;
 use App\Http\Requests\StoreCheckListGroupRequest;
 use App\Models\Checklist;
 use App\Models\ChecklistGroup;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Redirect;
 
 class ChecklistController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create(ChecklistGroup $checklist_group)
+    public function create(ChecklistGroup $checklist_group) : View
     {
         return view('admin.checklist.checklist-create',compact('checklist_group'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(StoreCheckListGroupRequest $request,ChecklistGroup $checklist_group)
+    public function store(StoreCheckListGroupRequest $request,ChecklistGroup $checklist_group): RedirectResponse
     {
         $checklist_group->checklist()->create($request->validated());
         return redirect()->route('dashboard');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(ChecklistGroup $checklist_group)
-    {
-        
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(ChecklistGroup $checklist_group , Checklist $checklist)
+    public function edit(ChecklistGroup $checklist_group , Checklist $checklist):View
     {
         return view('admin.checklist.checklist-edit',compact('checklist_group','checklist'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(ChecklistRequest $request,ChecklistGroup $checklist_group, Checklist $checklist)
+    
+    public function update(ChecklistRequest $request,ChecklistGroup $checklist_group, Checklist $checklist):RedirectResponse
     {
         $checklist->update($request->validated());
 
         return redirect()->route('dashboard')->with('success','Checklist updated successfully');;
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(ChecklistGroup $checklist_group,Checklist $checklist)
+
+    public function destroy(ChecklistGroup $checklist_group,Checklist $checklist):RedirectResponse
     {
         $checklist->delete();
         return redirect()->route('dashboard');

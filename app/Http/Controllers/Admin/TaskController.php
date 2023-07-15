@@ -6,30 +6,26 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreTaskRequest;
 use App\Models\Checklist;
 use App\Models\Task;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 class TaskController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+   
     public function index()
     {
         //
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+   
     public function create()
     {
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(StoreTaskRequest $request , Checklist $checklist)
+   
+    public function store(StoreTaskRequest $request , Checklist $checklist):RedirectResponse
     {
         $checklist->tasks()->create($request->validated());
         return redirect()
@@ -37,26 +33,20 @@ class TaskController extends Controller
         ->with('task_added','Task Added successfully');
     }
 
-    /**
-     * Display the specified resource.
-     */
+   
     public function show(string $id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Checklist $checklist , Task $task)
+   
+    public function edit(Checklist $checklist , Task $task):View
     {
         return view('admin.tasks.edit',compact('checklist','task'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(StoreTaskRequest $request , Checklist $checklist ,Task $task)
+    
+    public function update(StoreTaskRequest $request , Checklist $checklist ,Task $task):RedirectResponse
     {
        $task->update($request->validated());
         return redirect()
@@ -65,10 +55,8 @@ class TaskController extends Controller
       
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Checklist $checklist , Task $task)
+    
+    public function destroy(Checklist $checklist , Task $task):RedirectResponse
     {
         $task->delete();
         return redirect()
