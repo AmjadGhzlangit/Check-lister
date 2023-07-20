@@ -1,10 +1,4 @@
-<!DOCTYPE html><!--
-    * CoreUI - Free Bootstrap Admin Template
-    * @version v4.2.2
-    * @link https://coreui.io/product/free-bootstrap-admin-template/
-    * Copyright (c) 2023 creativeLabs Łukasz Holeczek
-    * Licensed under MIT (https://github.com/coreui/coreui-free-bootstrap-admin-template/blob/main/LICENSE)
-    --><!-- Breadcrumb-->
+<!DOCTYPE html>
     <html lang="en">
       <head>
         <base href="./">
@@ -43,14 +37,9 @@
       </head>
       <body>
         @include('layouts.sidebar')
-        <div class="wrapper d-flex flex-column min-vh-100 bg-light">
-          <header class="header header-sticky mb-4">
-          </header>
-       
-        <div>
+        @include('layouts.navbar')
           @yield('content')
-        </div>
-        </div>
+       
         <!-- CoreUI and necessary plugins-->
         <script src="{{ asset('vendors/@coreui/coreui/js/coreui.bundle.min.js')}}"></script>
         <script src="{{ asset('vendors/simplebar/js/simplebar.min.js')}}"></script>
@@ -101,4 +90,4 @@
             </main>
         </div>
     </body>
-</html> --}} --}}
+</html> --}} 

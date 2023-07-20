@@ -17,9 +17,6 @@ class PageController extends Controller
         return view('admin.pages.page-edit',compact('page'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(UpdatePageRequest $request, Page $page):RedirectResponse
     {
         $page->update($request->validated());

@@ -66,8 +66,16 @@
                         Breadcrumb</a></li>
             </ul>
         </li> --}}
+         <li class="nav-title">{{ __('Manage Data') }}</li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('admin.users.index') }}">
+                <svg class="nav-icon">
+                    <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-user"></use>
+                </svg>
+                {{ __('Users') }}
+            </a>
+        </li>
         <li class="nav-title">{{ __('other') }}</li>
-
         <li class="nav-item">
             <a class="nav-link" href="{{ route('logout') }}"
                 onclick="event.preventDefault();
@@ -82,4 +90,5 @@
                 @csrf
             </form>
         </li>
+       
 </div>
